@@ -224,6 +224,35 @@ int main()
 	//(c)int* ip, ip2;
 	//ip是一个指向int型对象的指针，ip2是一个int型变量
 
+	//2.4 const限定符
+	//const修饰的变量会拥有常属性，使其在初始化完成后将不能够被更改
+	//该类变量可用于缓冲区等
+	//该类变量可以防止被程序更改
+	//由于const修饰的变量一旦创建就不能够被修改，所以const修饰的变量必须初始化，初始哈值可以是任意表达式或函数
+	//初始化和const
+	//const与非const能执行的操作都差不多，除了不能够被赋值之外const能够完成非const能完成的大多数操作
+	//如果使用一个const对象去初始化另一个对象，那么另一个对象是不是const都无所谓
+	//const int Buffer = 512;
+	//const int b1 = Buffer;
+	//int b2 = Buffer;
+	//如果要在多个文件中共用同一个const对象而非各自建立一个新的const对象，只需在需要用到的地方都加上extern
+	//其它文件
+	// extern const int AT;
+	//初始化的文件
+	// extern const int AT = 114514;
+	//2.4节练习
+	//练习2.26下列有哪些句子是合法的，如果有不合法的句子，请说明为什么
+	// (a)const int buf;
+	//X 未初始化
+	// (b)int cnt = 0;
+	//V
+	// (c)const int sz = cnt;
+	//V
+	// (d)++cnt; ++sz;
+	//X sz为不可修改的const修饰的左值
+
+
+
 
 	return 0;
 }

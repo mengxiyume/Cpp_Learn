@@ -359,7 +359,54 @@ int main()
 	//(f)ic = *p3;
 	// 将常量整型指针常量解引用之后的值（也是常量）赋给整型常量，不合法
 
-
+	//2.4.3 顶层const
+	//用顶层const(top-level const)表示指针本身是常量
+	//用底层const(low-level const)表示指针所指向的对象是常量
+	//顶层const可以表示任意对象是常量
+	//而底层const则与指针和引用等复合类型的基本类型部分有关
+	//比较特殊的是，指针类既可以是顶层const也可以是底层const，这一点和其它类型区别明显
+	//int i = 0;
+	//int* const p1 = &i;			//不能改变p1的值，这是一个顶层const
+	//const int ci = 42;			//不能改变ci的值，这是一个顶层const
+	//const int* p2 = &ci;			//允许改变p2的值，这是一个底层const
+	//const int* const p3 = p2;		//靠右的const是顶层const，靠左的是底层const
+	//const int& r = ci;			//用于声明引用的const都是底层const
+	//当执行对象拷贝操作时，常量是顶层const还是底层const区别明显，其中，顶层const不受什么影响
+	//i = ci;		//拷贝ci的值，ci是一个顶层const，对此操作无影响
+	//p2 = p3;		//p2和p3指向的对象类型相同，p3顶层const的部分不影响
+	//执行拷贝操作并不会改变被拷贝对象的值，因此，拷入和拷出的对象是否常量都没有什么影响
+	//另一方面，底层const的限制却不能忽视，当执行对象的拷贝操作时，拷入和拷出的对象必须具有相同的底层const资格
+	//或者两个对象的数据类型能够转换，一般来说，非常量类型能转化为常量，反之则不能
+	//int* p = p3;			//错误，p3拥有底层const的定义，而p没有
+	//p2 = p3;				//正确，p2和p3都是底层const
+	//p2 = &i;				//正确，&i可以转化为const int*
+	//int &r = ci;			//错误，r并没有底层const
+	//const int& r2 = i;	//正确，i可以转化为const int
+	//p3既是顶层const也是底层const，拷贝p3时可以忽略p3时一个顶层const，但是必须清除它指向的对象必须时一个常量
+	//因此，不能用p3去初始化p，因为p指向的是一个普通顶端int
+	//另一方面，p3的值可以赋给p2，因为这两个指针都是底层const，尽管p3同时也是一个常量指针，但就这次赋值而言，并不会有什么影响
+	//2.4.3练习
+	//练习2.30: 对于下面这些语句，请说明对象被声明成了顶层const还是底层const
+	//int i = 0;
+	//const int v2 = 0;
+	////不能改变v2的值，顶层const
+	//int v1 = v2;
+	//int* p1 = &v1, & r1 = v1;
+	//const int* p2 = &v2, * const p3 = &i, & r2 = v2;
+	////可以改变p2的值，p2是底层const
+	////不能改变p3的值，p3是顶层const
+	////可以改变v2的值，r2是底层const
+	//练习2.31: 假设已有上一个练习中已做的声明，则下面哪些语句是合法的？请说明顶层const和底层const在每个句子中有何体现
+	//r1 = v2;
+	// 错误：r1为顶层const，不能被赋值
+	//p1 = p2;
+	// 错误：不能将const对象赋给非const对象
+	//p2 = p1;
+	// 正确：将普通对象赋给底层const对象
+	//p1 = p3;
+	// 不能将顶层const对象赋给普通对象
+	//p2 = p3;
+	// 将顶层const对象赋给底层const对象
 
 	std::cout << "Hello World" << std::endl;
 	return 0;

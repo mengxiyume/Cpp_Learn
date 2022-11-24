@@ -479,10 +479,15 @@ int main()
 	//using SI = Sales_item()
 	//这种方法用关键字using作为别名声明的开始，其后紧跟别名和等号，作用是把等哈左侧的名字规定成等号右边类型的别名
 	//类型别名和类型等价，只要是类型名字能出现的地方，类型别名就能使用
+	//指针、常量和类型别名
+	//如果某个别名代指的是复合类型或常量，那么把它用到声明语句中会产生意想不到的后果
+	//typedef char* pstring;
+	//const pstring cstr = 0;
+	//const pstring* ps;		//ps是一个指针，它指向的对象是一个指向char的常量指针
+	//const pstring scst 不等于 const char* cstr
+	//指针声明符只在开头出现了一次，之后的声明都会变成普通的char类型
 
-
-
-
+	//2.5.2 aoto类型说明符
 
 
 

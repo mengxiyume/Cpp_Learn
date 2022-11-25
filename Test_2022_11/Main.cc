@@ -1,10 +1,12 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include<iostream>
+#include<string>
+//#include"../VisualStudio2012/2/Sales_data.h"
 
 struct Sales_data
 {
-	std::string BookNo;
+	std::string bookNo;
 	unsigned units_sold = 0;
 	double revenue = 0.0;
 	std::string BookName = "未命名";
@@ -671,9 +673,71 @@ int main()
 	//};
 
 	//2.6.2 使用Sales_data类
-
-
-
+	//添加两个Sales_data 对象
+	//Sales_data data1, data2;
+	////读入data1和data2的代码
+	////检查data1和data2的ISBN是否相同的代码
+	////如果相同，求data1和data2的总和
+	////Sales_data 对象读入数据
+	////关于string的操作：
+	//// >>	读入字符串
+	//// <<	写出字符串
+	//// ==	比较字符串
+	////一笔交易
+	//double price = 0;	//书的单价，用于计算销售收入
+	////读入第一笔交易：ISBN、销售数量、单价
+	//std::cin >> data1.bookNo >> data1.units_sold >> price;
+	////计算销售收入
+	//data1.revenue = data1.units_sold * price;
+	////成员操作符( . )，访问成员
+	////读入第二笔交易
+	//std::cin >> data2.bookNo >> data2.units_sold >> price;
+	//data2.revenue = data2.units_sold * price;
+	////输出两个Sales_data对象的和
+	////剩下的工作就是检查两笔交易涉及的ISBN编号是否相同了
+	////如果相同输出它们的和
+	////如果不同则输出一条报错信息
+	//if (data1.bookNo == data2.bookNo)
+	//{
+	//	unsigned totaCnt = data1.units_sold + data2.units_sold;
+	//	double totalRevenue = data1.revenue + data2.revenue;
+	//	//输出： ISBN、总销售量、总销售额、平均价格
+	//	std::cout << data1.bookNo << " " << totaCnt
+	//		<< " " << totalRevenue << " ";
+	//	if (totaCnt != 0)
+	//	{
+	//		std::cout << totalRevenue / totaCnt << std::endl;
+	//	}
+	//	else
+	//	{
+	//		std::cout << "(no sales)" << std::endl;
+	//	}
+	//	return 0;	//标示成功
+	//}
+	//else		//两笔交易的ISBN号不同
+	//{
+	//	std::cerr<< "Data must refer to the ISBN" << std::endl;
+	//	return -1;	//标示失败
+	//}
+	//
+	//2.6.2节 练习
+	//练习2.41: 使用你自己的Sales_data 类重写第1.5.1节、1.5.2节和1.6节的练习，眼下先把Sales_data类的定义放在和main函数同一个文件里
+	//编写程序读取多个Sales_data对象，输出和
+	//Sales_data TmpData;
+	//double sum = 0;
+	//double price = 0;
+	//do {
+	//	std::cin >> TmpData.bookNo >> TmpData.units_sold >> price;
+	//	sum += TmpData.units_sold * price;
+	//	std::cout << "Continue?<Y:N";
+	//	char ret = ' ';
+	//	std::cin >> ret;
+	//	if (ret == 'N')
+	//	{
+	//		break;
+	//	}
+	//} while (true);
+	//std::cout << "Sum = " << sum << std::endl;
 
 	std::cout << "Hello World" << std::endl;
 	return 0;
